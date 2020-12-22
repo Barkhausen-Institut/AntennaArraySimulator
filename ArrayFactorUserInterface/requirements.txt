@@ -1,0 +1,7 @@
+tkinter
+os
+PIL==6.1.0
+scipy==1.2.1
+cmath
+numpy==1.16.4
+matplotlib==3.1.0
