@@ -28,6 +28,7 @@ please check the 'Theory of Array Factor.pdf'
 #%% Function for calculating the array factor
 
 def af_symmetrical_phasescannig (bx,by,bz,f,f0,steering_angle,Nx,Ny,Nz,increase_rate,plane):
+    
     c=3e8
     lamda=c/f
     lamda0=c/f0
@@ -40,18 +41,19 @@ def af_symmetrical_phasescannig (bx,by,bz,f,f0,steering_angle,Nx,Ny,Nz,increase_
     '''
     #To create an symmetrical array:
     
-    if Nx>0:
+    if Nx>1:
         distances_along_x=[]
         dx=bx #origin
         for n in range(int(Nx/2)):
             distances_along_x.append(dx)
             dx=dx+increase_rate
+        
         new_list_x=sorted(distances_along_x,reverse=True)
         new_list_x.remove(bx)
         new_list_x.extend(distances_along_x)
         new_list_x.insert(0, 0)    #new_list_x contains the position of each element along x axis
          
-    if Ny>0:
+    if Ny>1:
         distances_along_y=[]
         dy=by #origin
         for n in range(int(Ny/2)):
@@ -62,7 +64,7 @@ def af_symmetrical_phasescannig (bx,by,bz,f,f0,steering_angle,Nx,Ny,Nz,increase_
         new_list_y.extend(distances_along_y)
         new_list_y.insert(0, 0)     #new_list_y contains the position of each element along y axis
     
-    if Nz>0:
+    if Nz>1:
         distances_along_z=[]
         dz=bz #origin
         for n in range(int(Nz/2)):
@@ -83,7 +85,7 @@ def af_symmetrical_phasescannig (bx,by,bz,f,f0,steering_angle,Nx,Ny,Nz,increase_
     for i in range(len(incoming_angle)):
         
         #%%Array Factor along X axis
-        if Nx>0:
+        if Nx>1:
             # Based on the plane, either phi or theta must be kept constant. 
             if plane=='E':
                 phi=np.zeros(len(incoming_angle)) 
@@ -111,7 +113,7 @@ def af_symmetrical_phasescannig (bx,by,bz,f,f0,steering_angle,Nx,Ny,Nz,increase_
         else:
             array_factor_x=int(1)
         
-        if Ny>0:
+        if Ny>1:
         #%%Array Factor along Y axis
         # Based on the plane, either phi or theta must be kept constant. 
    
@@ -142,7 +144,7 @@ def af_symmetrical_phasescannig (bx,by,bz,f,f0,steering_angle,Nx,Ny,Nz,increase_
             array_factor_y=int(1)
         
         #%%Array Factor along Z axis
-        if Nz>0:
+        if Nz>1:
             all_received_signals_z=[]
             for n in range(0,Nz):
                 dist=sum(new_list_z[:n+1])*lamda0
@@ -163,11 +165,11 @@ def af_symmetrical_phasescannig (bx,by,bz,f,f0,steering_angle,Nx,Ny,Nz,increase_
 '''The lines below this comment can be used to get any plot with respect to the given input variables 
 which are bx,by,bz,f,f0,theta0,Nx,Ny,Nz,increase_rate,plane '''
 
+#array_factor_planar_asym (bx,by,bz,f,f0,theta0,Nx,Ny,Nz,increase_rate,plane):
 # =============================================================================
-# #array_factor_planar_asym (bx,by,bz,f,f0,theta0,Nx,Ny,Nz,increase_rate,plane):
-# incoming_angle,array_factor=af_symmetrical_phasescannig(0.5,0.5,0.5,9e9,10e9,20,0,32,0,0,'E')
-# incoming_angle,array_factor2=af_symmetrical_phasescannig(0.5,0.5,0.5,10e9,10e9,20,0,32,0,0.05,'E')
-# incoming_angle,array_factor3=af_symmetrical_phasescannig(0.5,0.5,0.5,11e9,10e9,20,0,32,0,0.1,'E')
+# incoming_angle,array_factor=af_symmetrical_phasescannig(0.5,0.5,0.5,10e9,10e9,0,1,8,1,0,'E')
+# incoming_angle,array_factor2=af_symmetrical_phasescannig(0.5,0.5,0.5,10e9,10e9,0,1,8,0,0.05,'E')
+# incoming_angle,array_factor3=af_symmetrical_phasescannig(0.5,0.5,0.5,10e9,10e9,0,1,8,0,0.1,'E')
 # #%% To get the plot
 # array_factor_db=20*(np.log10(abs(array_factor)))
 # array_factor_db2=20*(np.log10(abs(array_factor2)))

@@ -37,7 +37,7 @@ def af_symmetrical_timescannig (bx,by,bz,f,f0,steering_angle,Nx,Ny,Nz,increase_r
   
     #To create an symmetrical array:
 
-    if Nx>0:
+    if Nx>1:
         distances_along_x=[]
         dx=bx #origin
         for n in range(int(Nx/2)):
@@ -48,7 +48,7 @@ def af_symmetrical_timescannig (bx,by,bz,f,f0,steering_angle,Nx,Ny,Nz,increase_r
         new_list_x.extend(distances_along_x)
         new_list_x.insert(0, 0)     #new_list_x contains the position of each element along x axis
         
-    if Ny>0:
+    if Ny>1:
         distances_along_y=[]
         dy=by #origin
         for n in range(int(Ny/2)):
@@ -59,7 +59,7 @@ def af_symmetrical_timescannig (bx,by,bz,f,f0,steering_angle,Nx,Ny,Nz,increase_r
         new_list_y.extend(distances_along_y)
         new_list_y.insert(0, 0)     #new_list_y contains the position of each element along y axis
     
-    if Nz>0:
+    if Nz>1:
         distances_along_z=[]
         dz=bz #origin
         for n in range(int(Nz/2)):
@@ -85,7 +85,7 @@ def af_symmetrical_timescannig (bx,by,bz,f,f0,steering_angle,Nx,Ny,Nz,increase_r
     for i in range(len(incoming_angle)):
         
         #%%Array Factor along X axis
-        if Nx>0:
+        if Nx>1:
             # Based on the plane, either phi or theta must be kept constant. 
             if plane=='E':
                 phi=np.zeros(len(incoming_angle)) 
@@ -115,7 +115,7 @@ def af_symmetrical_timescannig (bx,by,bz,f,f0,steering_angle,Nx,Ny,Nz,increase_r
         else:
             array_factor_x=int(1)
         
-        if Ny>0:
+        if Ny>1:
         #%%Array Factor along Y axis
         # Based on the plane, either phi or theta must be kept constant. 
    
@@ -147,7 +147,7 @@ def af_symmetrical_timescannig (bx,by,bz,f,f0,steering_angle,Nx,Ny,Nz,increase_r
             array_factor_y=int(1)
         
         #%%Array Factor along Z axis
-        if Nz>0:
+        if Nz>1:
             theta=incoming_angle
             theta0=np.ones(len(incoming_angle))*steering_angle
 
