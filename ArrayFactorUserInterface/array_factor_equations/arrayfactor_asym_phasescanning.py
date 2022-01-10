@@ -149,7 +149,7 @@ def af_asym_phasescannig (bx,by,bz,f,f0,steering_angle,Nx,Ny,Nz,increase_rate,pl
             array_factor_z=int(1)
         array_factor=array_factor_x*array_factor_y*array_factor_z
 
-    return incoming_angle,array_factor
+    return incoming_angle,array_factor,array_factor_x,array_factor_y,array_factor_z
 
 '''The lines below this comment can be used to get any plot with respect to the given input variables 
 which are bx,by,bz,f,f0,steering_angle,Nx,Ny,Nz,increase_rate,plane '''
@@ -157,9 +157,9 @@ which are bx,by,bz,f,f0,steering_angle,Nx,Ny,Nz,increase_rate,plane '''
 # =============================================================================
 # #%%
 # #af_asym_phasescannig (bx,by,bz,f,f0,steering_angle,Nx,Ny,Nz,increase_rate,plane):
-# incoming_angle,array_factor=af_asym_phasescannig(0.5,0.5,0.5,9e9,10e9,20,0,32,0,0,'E')
-# incoming_angle,array_factor2=af_asym_phasescannig(0.5,0.5,0.5,10e9,10e9,20,0,32,0,0,'E')
-# incoming_angle,array_factor3=af_asym_phasescannig(0.5,0.5,0.5,11e9,10e9,20,0,32,0,0,'E')
+#incoming_angle,array_factor,array_factor_x,array_factor_y,array_factor_z=af_asym_phasescannig(0.5,0.5,0.5,9e9,10e9,20,0,32,0,0,'E')
+# incoming_angle,array_factor2,array_factor_x2,array_factor_y2,array_factor_z2=af_asym_phasescannig(0.5,0.5,0.5,10e9,10e9,20,0,32,0,0,'E')
+# incoming_angle,array_factor3,array_factor_x3,array_factor_y3,array_factor_z3=af_asym_phasescannig(0.5,0.5,0.5,11e9,10e9,20,0,32,0,0,'E')
 # 
 # 
 # #%% To get the cartesian plot

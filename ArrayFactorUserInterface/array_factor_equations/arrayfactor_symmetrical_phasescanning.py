@@ -159,7 +159,7 @@ def af_symmetrical_phasescannig (bx,by,bz,f,f0,steering_angle,Nx,Ny,Nz,increase_
         
         array_factor=array_factor_x*array_factor_y*array_factor_z
 
-    return incoming_angle,array_factor
+    return incoming_angle,array_factor,array_factor_x,array_factor_y,array_factor_z
 
 
 '''The lines below this comment can be used to get any plot with respect to the given input variables 
@@ -167,9 +167,9 @@ which are bx,by,bz,f,f0,theta0,Nx,Ny,Nz,increase_rate,plane '''
 
 #array_factor_planar_asym (bx,by,bz,f,f0,theta0,Nx,Ny,Nz,increase_rate,plane):
 # =============================================================================
-# incoming_angle,array_factor=af_symmetrical_phasescannig(0.5,0.5,0.5,10e9,10e9,0,1,8,1,0,'E')
-# incoming_angle,array_factor2=af_symmetrical_phasescannig(0.5,0.5,0.5,10e9,10e9,0,1,8,0,0.05,'E')
-# incoming_angle,array_factor3=af_symmetrical_phasescannig(0.5,0.5,0.5,10e9,10e9,0,1,8,0,0.1,'E')
+# incoming_angle,array_factorarray_factor_x,array_factor_y,array_factor_z=af_symmetrical_phasescannig(0.5,0.5,0.5,10e9,10e9,0,1,8,1,0,'E')
+# incoming_angle,array_factor2,array_factor_x2,array_factor_y2,array_factor_z2=af_symmetrical_phasescannig(0.5,0.5,0.5,10e9,10e9,0,1,8,0,0.05,'E')
+# incoming_angle,array_factor3,array_factor_x2,array_factor_y2,array_factor_z2=af_symmetrical_phasescannig(0.5,0.5,0.5,10e9,10e9,0,1,8,0,0.1,'E')
 # #%% To get the plot
 # array_factor_db=20*(np.log10(abs(array_factor)))
 # array_factor_db2=20*(np.log10(abs(array_factor2)))

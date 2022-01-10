@@ -153,7 +153,7 @@ def af_asym_timescannig (bx,by,bz,f,f0,steering_angle,Nx,Ny,Nz,increase_rate,pla
         
         array_factor=array_factor_x*array_factor_y*array_factor_z
 
-    return incoming_angle,array_factor
+    return incoming_angle,array_factor,array_factor_x,array_factor_y,array_factor_z
 
 
 
@@ -163,16 +163,17 @@ which are bx,by,bz,f,f0,theta0,Nx,Ny,Nz,increase_rate,plane '''
 
 # =============================================================================
 # #af_asym_timescannig (bx,by,bz,f,f0,steering_angle,Nx,Ny,Nz,increase_rate,plane)
-# theta_incoming_angle,array_factor=af_asym_timescannig(0.5,0.5,0.5,10e9,10e9,0,0,4,0,0,'E')
+# theta_incoming_angle,array_factor,array_factor_x,array_factor_y,array_factor_z=af_asym_timescannig(0.5,0,0,10e9,10e9,0,0,4,0,0,'E')
 # 
 # 
 # 
 # #%% To get the plot
-# array_factor_db=20*(np.log10(abs(array_factor)))
+# array_factor_db_1=20*(np.log10(abs(array_factor)))
+# 
 # #
 # plt.figure(figsize=(12,8))
-# plt.plot(theta_incoming_angle,array_factor_db,c='k',label='....')
-# 
+# plt.plot(theta_incoming_angle,array_factor_db_1,c='k',label='....')
+# plt.plot(theta_incoming_angle,array_factor_db_2,c='k',label='....')
 # plt.ylim(-40,0)
 # plt.xlim(-80,80)
 # plt.title('Uniform spaced Asymmetric Configuration of Planar Array ')
