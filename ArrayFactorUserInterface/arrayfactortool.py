@@ -789,16 +789,16 @@ def openNewWindow():
             try:
                 single_gain1=float(gain1_value)-float(correction_factor_design1)
             except ValueError:
-                single_gain1=0
+                single_gain1=-float(correction_factor_design1)
             
             try:
                 single_gain2=float(gain2_value)-float(correction_factor_design2)
             except ValueError:
-                single_gain2=0
+                single_gain2=-float(correction_factor_design2)
             try:
                 single_gain3=float(gain3_value)-float(correction_factor_design3)
             except ValueError:
-                single_gain3=0
+                single_gain3=-float(correction_factor_design3)
             
             try:
                 incoming_angle=incoming_angle_radian*180/pi
