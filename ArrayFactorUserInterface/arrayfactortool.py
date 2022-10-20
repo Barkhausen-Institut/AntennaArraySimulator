@@ -575,7 +575,6 @@ def openNewWindow():
     labeldesign2= tk.Label(newWindow,text = "DESIGN 2", font=('Courier', '13', 'bold'), bg=colour).place(x=x_location+440, y=10)
     labeldesign3= tk.Label(newWindow,text = "DESIGN 3", font=('Courier', '13', 'bold'), bg=colour).place(x=x_location+540, y=10)
 #%%
-
     def hpbwfunctionbroadside(incoming_angle,array_factor_db,steering_angle_1_):
         if isinstance(array_factor_db, np.ndarray):
             condition1=(incoming_angle >steering_angle_1_-90 ) & (steering_angle_1_ < steering_angle_1_+90)
@@ -589,6 +588,8 @@ def openNewWindow():
             freduced = interpolate.UnivariateSpline(x, yreduced, s=0)
             thetas=freduced.roots()
             if len(thetas)>0:
+#                print(thetas)
+#                print(steering_angle_1_)
                 difference_array = np.absolute(thetas-steering_angle_1_)
                 # find the index of minimum element from the array
                 index = difference_array.argmin()
@@ -608,7 +609,6 @@ def openNewWindow():
                 
         else:
             hpbw_1=101.5
-
             
         return hpbw_1
 
@@ -618,35 +618,39 @@ def openNewWindow():
             indices=list((*np.where(condition1)))
             new_x=np.take(incoming_angle, indices)
             arfactr=np.take(array_factor_db,indices,0)
+            #
             x=new_x
             y=arfactr
             yToFind = -3
             yreduced = np.array(y) - yToFind
             freduced = interpolate.UnivariateSpline(x, yreduced, s=0)
             thetas=freduced.roots()
-	    if len(thetas)>0:
-		
-		difference_array = np.absolute(thetas-steering_angle_1_)
-		# find the index of minimum element from the array
-		index = difference_array.argmin()
-		theta1=thetas[index]
-		thetas=np.delete(thetas, index)
-		difference_array = np.absolute(thetas-steering_angle_1_)
-		# find the index of minimum element from the array
-		index = difference_array.argmin()
-		theta2=thetas[index]
+            
+            if len(thetas)>0:
+                difference_array = np.absolute(thetas-steering_angle_1_)
+                # find the index of minimum element from the array
+                index = difference_array.argmin()
+                theta1=thetas[index]
+                thetas=np.delete(thetas, index)
+                difference_array = np.absolute(thetas-steering_angle_1_)
+                # find the index of minimum element from the array
+                index = difference_array.argmin()
+                theta2=thetas[index]
 
-		try:
-		    hpbw_1=np.absolute(theta1-theta2)
-		except IndexError:
-		    hpbw_1=46535**(0.5)
-	    else:
-		hpbw_1=46535**(0.5)
+                try:
+                    hpbw_1=np.absolute(theta1-theta2)
+                except IndexError:
+                    hpbw_1=46535**(0.5)
+            
+            else:
+                hpbw_1=46535**(0.5)
 
-	else:
-	    hpbw_1=46535**(0.5)
+                
+        else:
+            hpbw_1=46535**(0.5)
             
         return hpbw_1
+
 #%%    
     def hpbwcalc():
         
